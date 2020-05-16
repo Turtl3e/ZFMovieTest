@@ -2,11 +2,9 @@ package com.example.zf.models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Actor {
@@ -20,4 +18,7 @@ public class Actor {
     private Date born;
     private String placeOfBirth;
     private String description;
+
+    @ManyToMany(mappedBy = "actors")
+    List<Movie> movies;
 }
