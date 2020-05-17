@@ -47,7 +47,7 @@ public class Movie extends Piece {
     }
 
     @ManyToMany
-    public Set<Actor> actors= new HashSet<Actor>();
+    public Set<Actor> actors;
 
 }
 

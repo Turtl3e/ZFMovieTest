@@ -2,19 +2,19 @@ package com.example.zf.mapers;
 
 import com.example.zf.models.Movie;
 import com.example.zf.models.dto.MovieInput;
-import com.example.zf.models.dto.MovieOutput;
+import com.example.zf.models.dto.MovieWithoutActorsDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class MovieMapper {
 
-    public static List<MovieOutput> mapToMoviesOutput(List<Movie> movies){
-        return movies.stream().map(movie -> mapToMovieOutput(movie)).collect(Collectors.toList());
+    public static List<MovieWithoutActorsDto> mapToMoviesWithoutActorsDto(List<Movie> movies){
+        return movies.stream().map(movie -> mapToMovieWithoutActorsDto(movie)).collect(Collectors.toList());
     }
 
-    public static MovieOutput mapToMovieOutput(Movie movie) {
-        return MovieOutput.builder()
+    public static MovieWithoutActorsDto mapToMovieWithoutActorsDto(Movie movie) {
+        return MovieWithoutActorsDto.builder()
                 .pieceId(movie.getPieceId())
                 .releaseDate(movie.getReleaseDate())
                 .title(movie.getTitle())

@@ -1,14 +1,23 @@
 package com.example.zf.models;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
+@RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
+@Accessors(chain = true)
 public class Actor {
 
     @Id
@@ -22,5 +31,14 @@ public class Actor {
     private String description;
 
     @ManyToMany(mappedBy = "actors")
-    List<Movie> movies;
+    public Set<Movie> movies;
+
+    public Actor update(Actor updatedActor){
+        this.setFirstName(updatedActor.getFirstName())
+                .setSecondName(updatedActor.getSecondName())
+                .setBorn(updatedActor.getBorn())
+                .setDescription(updatedActor.getDescription())
+                .setPlaceOfBirth(updatedActor.getPlaceOfBirth());
+        return this;
+    }
 }

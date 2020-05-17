@@ -8,12 +8,12 @@ import lombok.Getter;
 import java.util.Date;
 
 @Getter
-public class MovieOutput extends Piece {
+public class MovieWithoutActorsDto extends Piece {
     private String title;
     private String description;
 
     @Builder
-    public MovieOutput(Long pieceId, Date releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
+    public MovieWithoutActorsDto(Long pieceId, Date releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
         super(pieceId, releaseDate);
         this.title = title;
         this.description = description;

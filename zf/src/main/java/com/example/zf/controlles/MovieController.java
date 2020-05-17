@@ -3,14 +3,12 @@ package com.example.zf.controlles;
 import com.example.zf.mapers.MovieMapper;
 import com.example.zf.models.Movie;
 import com.example.zf.models.dto.MovieInput;
-import com.example.zf.models.dto.MovieOutput;
+import com.example.zf.models.dto.MovieWithoutActorsDto;
 import com.example.zf.services.MovieService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/movies")
@@ -20,14 +18,14 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping("")
-    public List<MovieOutput> getMovies() {
+    public List<MovieWithoutActorsDto> getMovies() {
 
-        return MovieMapper.mapToMoviesOutput(movieService.getMovies());
+        return MovieMapper.mapToMoviesWithoutActorsDto(movieService.getMovies());
     }
 
     @PostMapping()
-    public MovieOutput createMovie(@RequestBody MovieInput movieToCreate){
-        return MovieMapper.mapToMovieOutput(movieService.createMovie(MovieMapper.movieInputToMovie(movieToCreate)));
+    public MovieWithoutActorsDto createMovie(@RequestBody MovieInput movieToCreate){
+        return MovieMapper.mapToMovieWithoutActorsDto(movieService.createMovie(MovieMapper.movieInputToMovie(movieToCreate)));
     }
 
     @GetMapping("/{id}")
@@ -36,9 +34,9 @@ public class MovieController {
     }
 
     @PutMapping("/{id}")
-    public MovieOutput updateMovie(@PathVariable(value = "id") long movieToUpdateId, @RequestBody MovieInput updatedMovie){
+    public MovieWithoutActorsDto updateMovie(@PathVariable(value = "id") long movieToUpdateId, @RequestBody MovieInput updatedMovie){
         System.out.println(movieToUpdateId);
-        return MovieMapper.mapToMovieOutput(movieService.updateMovie(movieToUpdateId,MovieMapper.movieInputToMovie(updatedMovie)));
+        return MovieMapper.mapToMovieWithoutActorsDto(movieService.updateMovie(movieToUpdateId,MovieMapper.movieInputToMovie(updatedMovie)));
     }
 
     @DeleteMapping("/{id}")

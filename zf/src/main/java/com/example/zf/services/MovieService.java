@@ -3,8 +3,6 @@ package com.example.zf.services;
 import com.example.zf.exceptions.MovieNotFoundException;
 import com.example.zf.models.Movie;
 
-import com.example.zf.models.dto.MovieInput;
-import com.example.zf.models.dto.MovieOutput;
 import com.example.zf.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
