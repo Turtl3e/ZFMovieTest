@@ -1,0 +1,30 @@
+package com.example.zf.models.dto;
+
+import com.example.zf.models.Piece;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+
+import java.util.Date;
+
+@Getter
+public class MovieOutput extends Piece {
+    private String title;
+    private String description;
+
+    @Builder
+    public MovieOutput(Long pieceId, Date releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
+        super(pieceId, releaseDate);
+        this.title = title;
+        this.description = description;
+        this.posterUrl = posterUrl;
+        this.director = director;
+        this.genre = genre;
+        this.countryOfProduction = countryOfProduction;
+    }
+
+    private String posterUrl;
+    private String director; //TODO: Should be a class
+    private String genre; //TODO: Should be a list of strings or a class
+    private String countryOfProduction;
+}

@@ -1,11 +1,13 @@
 package com.example.zf.models;
 
 import com.sun.istack.NotNull;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Data
 @Entity
 public class Actor {
 

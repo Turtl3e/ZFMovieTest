@@ -58,6 +58,11 @@
 			<artifactId>spring-restdocs-mockmvc</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.2.32</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -85,6 +90,7 @@
 						<artifactId>spring-restdocs-asciidoctor</artifactId>
 						<version>${spring-restdocs.version}</version>
 					</dependency>
+
 				</dependencies>
 			</plugin>
 			<plugin>
