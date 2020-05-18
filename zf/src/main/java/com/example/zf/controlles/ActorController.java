@@ -2,6 +2,7 @@ package com.example.zf.controlles;
 
 import com.example.zf.mapers.ActorMapper;
 import com.example.zf.models.Actor;
+import com.example.zf.models.dto.ActorDto;
 import com.example.zf.models.dto.ActorInput;
 import com.example.zf.models.dto.ActorWithoutMoviesDto;
 import com.example.zf.services.ActorService;
@@ -27,8 +28,8 @@ public class ActorController {
     }
 //
     @GetMapping("/{id}")
-    public Actor getActor(@PathVariable long id)  {
-        return actorService.getActor(id);
+    public ActorDto getActor(@PathVariable long id)  {
+        return ActorMapper.actorToActorDto(actorService.getActor(id));
     }
 //
     @PutMapping("/{id}")

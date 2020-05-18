@@ -11,6 +11,10 @@ import java.util.Date;
 public class MovieWithoutActorsDto extends Piece {
     private String title;
     private String description;
+    private String posterUrl;
+    private String director; //TODO: Should be a class
+    private String genre; //TODO: Should be a list of strings or a class
+    private String countryOfProduction;
 
     @Builder
     public MovieWithoutActorsDto(Long pieceId, Date releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
@@ -23,8 +27,5 @@ public class MovieWithoutActorsDto extends Piece {
         this.countryOfProduction = countryOfProduction;
     }
 
-    private String posterUrl;
-    private String director; //TODO: Should be a class
-    private String genre; //TODO: Should be a list of strings or a class
-    private String countryOfProduction;
+
 }

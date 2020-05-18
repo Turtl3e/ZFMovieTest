@@ -2,6 +2,7 @@ package com.example.zf.mapers;
 
 import com.example.zf.models.Actor;
 import com.example.zf.models.Movie;
+import com.example.zf.models.dto.ActorDto;
 import com.example.zf.models.dto.ActorInput;
 import com.example.zf.models.dto.ActorWithoutMoviesDto;
 import com.example.zf.models.dto.MovieWithoutActorsDto;
@@ -33,6 +34,18 @@ public class ActorMapper {
                 .born(actorInput.getBorn())
                 .description(actorInput.getDescription())
                 .placeOfBirth(actorInput.getPlaceOfBirth())
+                .build();
+    }
+
+        public static ActorDto actorToActorDto(Actor actor){
+        return ActorDto.builder()
+                .actorId(actor.getActorId())
+                .born(actor.getBorn())
+                .description(actor.getDescription())
+                .firstName(actor.getFirstName())
+                .placeOfBirth(actor.getPlaceOfBirth())
+                .secondName(actor.getSecondName())
+                .movies(actor.getMovies().stream().map(movie -> MovieMapper.mapToMovieWithoutActorsDto(movie)).collect(Collectors.toList()))
                 .build();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.zf.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 import lombok.*;
 
@@ -14,6 +16,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
+//@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="@pieceId")
 public abstract class Piece {
 
     @Id

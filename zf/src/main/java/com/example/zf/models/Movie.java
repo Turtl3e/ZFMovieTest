@@ -1,5 +1,8 @@
 package com.example.zf.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -7,7 +10,9 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 //@getter @setter @ToString @EqualsAndHashCode @RequriedArgsConstructor
 @Entity
@@ -46,8 +51,13 @@ public class Movie extends Piece {
         return this;
     }
 
-    @ManyToMany
-    public Set<Actor> actors;
+    public void removeActor(Actor actorToRemove){
+        actors.remove(actorToRemove);
+    }
+
+    @ManyToMany //cascade = {CascadeType.PERSIST,CascadeType.MERGE}
+    @JsonManagedReference
+    public List<Actor> actors;
 
 }
 

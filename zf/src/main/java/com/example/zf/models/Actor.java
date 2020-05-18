@@ -1,5 +1,9 @@
 package com.example.zf.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +22,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Accessors(chain = true)
+//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="@movies")
 public class Actor {
 
     @Id
@@ -31,7 +36,8 @@ public class Actor {
     private String description;
 
     @ManyToMany(mappedBy = "actors")
-    public Set<Movie> movies;
+    @JsonBackReference
+    public List<Movie> movies;
 
     public Actor update(Actor updatedActor){
         this.setFirstName(updatedActor.getFirstName())

@@ -1,9 +1,9 @@
 package com.example.zf.controlles;
 
+import com.example.zf.mapers.ActorMapper;
 import com.example.zf.mapers.MovieMapper;
 import com.example.zf.models.Movie;
-import com.example.zf.models.dto.MovieInput;
-import com.example.zf.models.dto.MovieWithoutActorsDto;
+import com.example.zf.models.dto.*;
 import com.example.zf.services.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +33,11 @@ public class MovieController {
         return movieService.getMovie(id);
     }
 
+//    @GetMapping("/{id}")
+//    public MovieDto getMovie(@PathVariable long id)  {
+//        return MovieMapper.toMovie2(movieService.getMovie(id));
+//    }
+
     @PutMapping("/{id}")
     public MovieWithoutActorsDto updateMovie(@PathVariable(value = "id") long movieToUpdateId, @RequestBody MovieInput updatedMovie){
         System.out.println(movieToUpdateId);
@@ -42,5 +47,17 @@ public class MovieController {
     @DeleteMapping("/{id}")
     public void deleteMovie(@PathVariable(value = "id") long movieToDeleteId){
         movieService.deleteMovie(movieToDeleteId);
+    }
+
+    //Relations
+    //FIXME: Should be /movieId?
+    @PostMapping("/{movieId}/actors")
+    public ActorWithoutMoviesDto addActorToMovie(@PathVariable(value = "movieId") long movieId,@RequestBody ActorInput actorToAdd){
+        return ActorMapper.mapToActorWithoutMoviesDto(movieService.addActorToMovie(movieId,ActorMapper.actorInputToActor(actorToAdd)));
+    }
+
+    @DeleteMapping("/{movieId}/actors/{actorId}")
+    public void removeActorFromMovie(@PathVariable(value = "movieId") long movieId,@PathVariable(value = "actorId") long actorId){
+        movieService.removeActorFromMovie(movieId,actorId);
     }
 }

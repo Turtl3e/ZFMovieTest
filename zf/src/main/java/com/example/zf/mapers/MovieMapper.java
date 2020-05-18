@@ -1,6 +1,7 @@
 package com.example.zf.mapers;
 
 import com.example.zf.models.Movie;
+import com.example.zf.models.dto.MovieDto;
 import com.example.zf.models.dto.MovieInput;
 import com.example.zf.models.dto.MovieWithoutActorsDto;
 
@@ -35,6 +36,20 @@ public class MovieMapper {
                 .genre(movieInput.getGenre())
                 .posterUrl(movieInput.getPosterUrl())
                 .title(movieInput.getTitle())
+                .build();
+    }
+
+    public static MovieDto movieToMovieDto(Movie movie){
+        return MovieDto.builder()
+                .countryOfProduction(movie.getCountryOfProduction())
+                .actors(movie.actors.stream().map(actor ->  ActorMapper.mapToActorWithoutMoviesDto(actor)).collect(Collectors.toList()))
+                .description(movie.getDescription())
+                .director(movie.getDirector())
+                .genre(movie.getGenre())
+                .pieceId(movie.getPieceId())
+                .posterUrl(movie.getPosterUrl())
+                .releaseDate(movie.getReleaseDate())
+                .title(movie.getTitle())
                 .build();
     }
 }
