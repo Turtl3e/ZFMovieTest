@@ -1,1 +1,75 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+@import './utils/utils.scss';
+@import url('https://fonts.googleapis.com/css2?family=Rhodium+Libre&display=swap');
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$zf-movie-ui-primary: mat-palette($mat-indigo);
+$zf-movie-ui-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$zf-movie-ui-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$zf-movie-ui-theme: mat-light-theme($zf-movie-ui-primary, $zf-movie-ui-accent, $zf-movie-ui-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($zf-movie-ui-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: $background-color;
+}
+
+body {
+  margin: 0;
+  //   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Rhodium Libre', serif;
+}
+
+
+.main-button {
+  //RESET BUTTON
+  border: none;
+  margin: 0;
+  padding: .2rem 1rem;
+  width: auto;
+  //   overflow: visible;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  //   -webkit-font-smoothing: inherit;
+  //   -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  //   -webkit-appearance: none;
+
+  //Styling
+  background-color: $div-content-color;
+  box-shadow: 10px -10px 0px -5px $underlay-color;
+}
