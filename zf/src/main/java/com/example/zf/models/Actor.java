@@ -39,12 +39,11 @@ public class Actor {
     @JsonBackReference
     public List<Movie> movies;
 
-    public Actor update(Actor updatedActor){
+    public void update(Actor updatedActor){
         this.setFirstName(updatedActor.getFirstName())
                 .setSecondName(updatedActor.getSecondName())
                 .setBorn(updatedActor.getBorn())
                 .setDescription(updatedActor.getDescription())
                 .setPlaceOfBirth(updatedActor.getPlaceOfBirth());
-        return this;
     }
 }

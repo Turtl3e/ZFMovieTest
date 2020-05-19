@@ -35,7 +35,8 @@ public class MovieService {
 
     public Movie updateMovie(long movieToUpdateId,Movie updatedMovie) {
         Movie movieToUpdate=getMovie(movieToUpdateId);
-        return movieToUpdate.updateMovie(updatedMovie);
+        movieToUpdate.updateMovie(updatedMovie);
+        return movieRepository.save(movieToUpdate);//should be save
     }
 
     public void deleteMovie(long movieToDeleteId) {

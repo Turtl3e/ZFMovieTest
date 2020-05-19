@@ -29,7 +29,8 @@ public class ActorService {
 
     public Actor updateActor(long actorToUpdateId, Actor actorInputToActor) {
         Actor actorToUpdate=getActor(actorToUpdateId);
-        return actorToUpdate.update(actorInputToActor);
+        actorToUpdate.update(actorInputToActor);
+        return actorRepository.save(actorToUpdate);
     }
 
     public void deleteActor(long actorToDeleteId) {

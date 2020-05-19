@@ -40,7 +40,7 @@ public class Movie extends Piece {
         this.countryOfProduction = countryOfProduction;
     }
 
-    public Movie updateMovie(Movie updatedMovie){
+    public void updateMovie(Movie updatedMovie){
         this.setTitle(updatedMovie.getTitle())
         .setDescription(updatedMovie.getDescription())
         .setCountryOfProduction(updatedMovie.getCountryOfProduction())
@@ -48,7 +48,6 @@ public class Movie extends Piece {
         .setGenre(updatedMovie.getGenre())
         .setPosterUrl(updatedMovie.getPosterUrl())
         .setReleaseDate(updatedMovie.getReleaseDate());
-        return this;
     }
 
     public void removeActor(Actor actorToRemove){
