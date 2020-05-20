@@ -18,3 +18,15 @@
     padding: 0 10vw;
   }
 }
+
+app-squared-button {
+  position: fixed;
+  bottom: 2px;
+  right: 5px;
+
+  @media(min-width: 768px) {
+    bottom: 5%;
+    right: 5%;
+
+  }
+}

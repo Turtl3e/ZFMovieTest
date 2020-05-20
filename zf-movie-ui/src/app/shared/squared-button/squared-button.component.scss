@@ -2,7 +2,23 @@
 
 :host {
   display: inline-block;
+  z-index: 4;
+
+  &.action-button {
+    transition: all ease-in-out .2s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+
+
+  }
 }
+
+// :host.action-button:hover>.front-square {
+//   background-color: red;
+// }
 
 .front-square {
   position: relative;
@@ -14,4 +30,13 @@
   position: absolute;
   top: -4px;
   right: -4px;
+}
+
+
+mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  line-height: 48px;
+  color: rgba(255, 255, 255, 0.54);
 }
