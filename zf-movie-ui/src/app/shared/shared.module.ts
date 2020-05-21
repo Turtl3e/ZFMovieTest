@@ -9,12 +9,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
+import { ActorFormComponent } from './actor-form/actor-form.component';
+import { MatTabsModule } from '@angular/material/tabs';
+
 @NgModule({
   declarations:
     [
       SquaredButtonComponent,
       SquaredParagraphComponent,
-      NextBackButtonComponent
+      NextBackButtonComponent,
+      ActorFormComponent
     ],
   imports:
     [
@@ -24,7 +28,8 @@ import { FormsModule } from '@angular/forms';
       MatFormFieldModule,
       MatInputModule,
       MatDatepickerModule,
-      FormsModule
+      FormsModule,
+      MatTabsModule
     ],
   exports:
     [
@@ -36,7 +41,9 @@ import { FormsModule } from '@angular/forms';
       MatFormFieldModule,
       MatInputModule,
       MatDatepickerModule,
-      FormsModule
+      FormsModule,
+      ActorFormComponent,
+      MatTabsModule
     ]
 })
 export class SharedModule { }

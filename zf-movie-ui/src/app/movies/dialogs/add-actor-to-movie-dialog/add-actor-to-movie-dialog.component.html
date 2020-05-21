@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add actor to this movie</h1>
+<div mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Find existing">
+      <app-search-actors></app-search-actors>
+    </mat-tab>
+    <mat-tab label="Add new">
+      <app-actor-form></app-actor-form>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<div mat-dialog-actions>
+  <button class="main-button main-button--cancel" mat-dialog-close>Close</button>
+  <!-- <button (click)="onSubmit(createMovieForm)" type="submit" class="main-button main-button--save"
+    [disabled]="createMovieForm.invalid">{{isEditing?"Update":"Create"}}</button> -->
+</div>

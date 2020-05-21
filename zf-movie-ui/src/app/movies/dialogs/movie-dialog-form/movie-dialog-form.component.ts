@@ -22,19 +22,16 @@ export class MovieDialogFormComponent implements OnInit {
   }
 
   onSubmit(movieForm: NgForm) {
-    console.log("X")
     this.isEditing ? this.updateMovie(this.editingOrNewMovie) : this.createMovie(this.editingOrNewMovie);
   }
 
   createMovie(movieToCreate: MovieRequest) {
-    console.log("X")
     this.movieService.createMovie(movieToCreate).subscribe((createdMovie: Movie) => {
       this.dialogRef.close(createdMovie);
     })
   }
 
   updateMovie(newMovie: Movie) {
-    console.log("X")
     this.movieService.updateMovie(newMovie.pieceId, newMovie).subscribe((updatedMovie: Movie) => {
       this.dialogRef.close(updatedMovie);
     });

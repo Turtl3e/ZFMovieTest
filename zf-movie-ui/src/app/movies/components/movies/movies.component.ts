@@ -36,7 +36,9 @@ export class MoviesComponent implements OnInit {
 
   openCreateMovieDialog() {
     this.dialog.open(MovieDialogFormComponent).afterClosed().subscribe((createdMovie: Movie) => {
-      this.movies.push(createdMovie);
+      if (createdMovie) {
+        this.movies.push(createdMovie);
+      }
     })
   }
 }

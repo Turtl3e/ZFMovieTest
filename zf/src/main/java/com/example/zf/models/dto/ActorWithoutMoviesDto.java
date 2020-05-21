@@ -14,4 +14,5 @@ public class ActorWithoutMoviesDto {
     private Date born;
     private String placeOfBirth;
     private String description;
+    private String posterUrl;
 }

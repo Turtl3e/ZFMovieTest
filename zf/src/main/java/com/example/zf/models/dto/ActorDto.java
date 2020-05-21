@@ -18,5 +18,6 @@ public class ActorDto {
     private Date born;
     private String placeOfBirth;
     private String description;
+    private String posterUrl;
     public List<MovieWithoutActorsDto> movies;
 }

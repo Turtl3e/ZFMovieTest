@@ -24,6 +24,7 @@ public class ActorMapper {
                 .firstName(actor.getFirstName())
                 .secondName(actor.getSecondName())
                 .placeOfBirth(actor.getPlaceOfBirth())
+                .posterUrl(actor.getPosterUrl())
                 .build();
     }
 
@@ -34,6 +35,7 @@ public class ActorMapper {
                 .born(actorInput.getBorn())
                 .description(actorInput.getDescription())
                 .placeOfBirth(actorInput.getPlaceOfBirth())
+                .posterUrl(actorInput.getPosterUrl())
                 .build();
     }
 
@@ -45,6 +47,7 @@ public class ActorMapper {
                 .firstName(actor.getFirstName())
                 .placeOfBirth(actor.getPlaceOfBirth())
                 .secondName(actor.getSecondName())
+                .posterUrl(actor.getPosterUrl())
                 .movies(actor.getMovies().stream().map(movie -> MovieMapper.mapToMovieWithoutActorsDto(movie)).collect(Collectors.toList()))
                 .build();
     }

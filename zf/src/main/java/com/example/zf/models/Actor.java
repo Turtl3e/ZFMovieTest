@@ -34,6 +34,7 @@ public class Actor {
     private Date born;
     private String placeOfBirth;
     private String description;
+    private String posterUrl;
 
     @ManyToMany(mappedBy = "actors")
     @JsonBackReference

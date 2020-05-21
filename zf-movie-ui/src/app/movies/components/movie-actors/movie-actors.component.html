@@ -1,28 +1,14 @@
-<app-movie></app-movie>
+<app-movie [movie]="movie"></app-movie>
 <div class="movie-actors">
   <div class="movie-actors-card">
     <div class="movie-actors-card-content">
       <div class="movie-actors-card-header">
         <p class="movie-actors-card-heading">Obsada</p>
-        <app-squared-button icon="true" size="3rem"></app-squared-button>
+        <app-squared-button icon="true" size="3rem" (click)="openAddActorToMovieDialog()"></app-squared-button>
       </div>
       <div class="scroll-container">
-        <app-photo-overlay></app-photo-overlay>
-        <app-photo-overlay></app-photo-overlay>
-        <app-photo-overlay></app-photo-overlay>
-        <app-photo-overlay></app-photo-overlay>
-        <!-- <div class="actor">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Daniel_Radcliffe_SDCC_2014.jpg" alt=""
-            srcset="">
-        </div>
-        <div class="actor">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Daniel_Radcliffe_SDCC_2014.jpg" alt=""
-            srcset="">
-        </div>
-        <div class="actor">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Daniel_Radcliffe_SDCC_2014.jpg" alt=""
-            srcset="">
-        </div> -->
+        <!--TODO: Add slicker gallery instead of scroll-->
+        <app-photo-overlay *ngFor="let actor of movie.actors" [actor]="actor"></app-photo-overlay>
       </div>
     </div>
     <div class="movie-actors-card-underlay"></div>

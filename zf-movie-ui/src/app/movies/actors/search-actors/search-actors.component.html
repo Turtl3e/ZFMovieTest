@@ -1,0 +1,5 @@
+<p>search-actors works!</p>
+<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<li *ngFor="let actor of actors$ | async">
+  <a>{{actor.firstName}}</a>
+</li>

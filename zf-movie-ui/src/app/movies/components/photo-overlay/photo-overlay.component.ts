@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Actor } from 'src/app/models/actor';
 
 @Component({
   selector: 'app-photo-overlay',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotoOverlayComponent implements OnInit {
 
+  @Input() actor: Actor;
   constructor() { }
 
   ngOnInit(): void {

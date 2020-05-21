@@ -12,9 +12,11 @@ export class MovieComponent implements OnInit {
 
   @Output() deleted = new EventEmitter<number>();
   @Input() movie: Movie;
+  isDetailsComponent = false;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.isDetailsComponent = !!this.movie.actors;
   }
 
   deleteMovie() {

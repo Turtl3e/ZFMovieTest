@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { Movie, MovieResponse, MovieRequest } from '../models/movie';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,13 @@ export class MovieService {
   getMovies(): Observable<Movie[]> {
     return this.http.get<MovieResponse[]>(this.MOVIE_PATH).pipe(
       map((moviesData) => moviesData.map(movie => new Movie(movie)))
+    )
+  }
+
+  getMovie(movieId: number): Observable<Movie> {
+    return this.http.get<MovieResponse>(`${this.MOVIE_PATH}/${movieId}`).pipe(
+      map(movie => new Movie(movie)),
+      catchError(e => of(null))
     )
   }
 
@@ -33,4 +40,10 @@ export class MovieService {
       map(createdMovie => new Movie(createdMovie))
     )
   }
+
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
+  //     return of(result as T);
+  //   };
+  // }
 }

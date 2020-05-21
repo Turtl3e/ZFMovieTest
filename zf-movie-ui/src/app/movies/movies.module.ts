@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MovieActorsComponent } from './components/movie-actors/movie-actors.component';
 import { PhotoOverlayComponent } from './components/photo-overlay/photo-overlay.component';
 import { MovieDialogFormComponent } from './dialogs/movie-dialog-form/movie-dialog-form.component';
+import { AddActorToMovieDialogComponent } from './dialogs/add-actor-to-movie-dialog/add-actor-to-movie-dialog.component';
+import { SearchActorsComponent } from './actors/search-actors/search-actors.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { MovieDialogFormComponent } from './dialogs/movie-dialog-form/movie-dial
       MovieComponent,
       MovieActorsComponent,
       PhotoOverlayComponent,
-      MovieDialogFormComponent
+      MovieDialogFormComponent,
+      AddActorToMovieDialogComponent,
+      SearchActorsComponent
     ],
   imports:
     [
