@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Create Actor</h1>
+<div mat-dialog-content>
+  <form class="example-form" #createMovieForm="ngForm">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input class="form-control" matInput placeholder="Ex. Harry Potter" name="title" required
+        [(ngModel)]="editingOrNewMovie.title">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Lorem ipsum dolor sit amet..." rows="6" name="description" required
+        [(ngModel)]="editingOrNewMovie.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Poster URL</mat-label>
+      <input matInput placeholder="http://..." name="posterUrl" required [(ngModel)]="editingOrNewMovie.posterUrl">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Director</mat-label>
+      <input matInput placeholder="John Smith" name="director" required [(ngModel)]="editingOrNewMovie.director">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Genre</mat-label>
+      <input matInput placeholder="Familijny / Fantasy / Przygodowy" name="genre" required
+        [(ngModel)]="editingOrNewMovie.genre">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Production country</mat-label>
+      <input matInput placeholder="Poland" name="countryOfProduction" required
+        [(ngModel)]="editingOrNewMovie.countryOfProduction">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" color="accent">
+      <mat-label>Release date</mat-label>
+      <input matInput [matDatepicker]="picker2" required name="releaseDate" [(ngModel)]="editingOrNewMovie.releaseDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button class="main-button main-button--cancel" mat-dialog-close>Close</button>
+  <button (click)="onSubmit(createMovieForm)" type="submit" class="main-button main-button--save"
+    [disabled]="createMovieForm.invalid">{{isEditing?"Update":"Create"}}</button>
+</div>

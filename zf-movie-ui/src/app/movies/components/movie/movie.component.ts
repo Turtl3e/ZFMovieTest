@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Movie } from 'src/app/models/movie';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MovieDialogFormComponent } from '../../dialogs/movie-dialog-form/movie-dialog-form.component';
 
 @Component({
   selector: 'app-movie',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieComponent implements OnInit {
 
-  constructor() { }
+  @Output() deleted = new EventEmitter<number>();
+  @Input() movie: Movie;
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  deleteMovie() {
+    this.deleted.emit(this.movie.pieceId);
+  }
+
+  openEditMovieDialog() {
+    this.dialog.open(MovieDialogFormComponent, { data: this.movie }).afterClosed().subscribe((updatedMovie: Movie) => {
+      if (updatedMovie) {
+        this.movie = updatedMovie;
+      }
+    })
   }
 
 }

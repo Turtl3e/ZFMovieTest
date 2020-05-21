@@ -1,22 +1,21 @@
 <div class="poster-container">
   <div class="poster">
-    <img src="https://fwcdn.pl/fpo/30/08/113008/7166226.3.jpg" alt="">
+    <img src="{{movie.posterUrl}}" alt="">
   </div>
 </div>
 <div class="info-container">
   <div class="info">
     <div class="info-content">
-      <p class="info-content-heading">Harry Potter i Zakon Feniksa</p>
-      <p class="info-content-description">Harry i jego przyjaciele zakładają tajne stowarzyszenie "Gwardię
-        Dumbledore'a", aby przygotować się do starcia z Voldemortem.</p>
+      <p class="info-content-heading">{{movie.title}}</p>
+      <p class="info-content-description">{{movie.description}}</p>
       <!-- <app-squared-button></app-squared-button> -->
-      <app-squared-paragraph>Lorem ipsum dolor sit amet.</app-squared-paragraph>
-      <app-squared-paragraph>Lorem ipsum dolor sit amet.</app-squared-paragraph>
-      <app-squared-paragraph>Lorem ipsum dolor sit amet.</app-squared-paragraph>
-      <app-squared-paragraph>Lorem ipsum dolor sit amet.</app-squared-paragraph>
+      <app-squared-paragraph><b>Director:</b> {{movie.director}}</app-squared-paragraph>
+      <app-squared-paragraph><b>Genre:</b> {{movie.genre}}</app-squared-paragraph>
+      <app-squared-paragraph><b>Production country:</b> {{movie.countryOfProduction}}</app-squared-paragraph>
+      <app-squared-paragraph><b>Premiere:</b> {{movie.releaseDate|date:'mediumDate'}}</app-squared-paragraph>
       <div class="action-container">
-        <mat-icon>delete_forever</mat-icon>
-        <mat-icon>edit</mat-icon>
+        <mat-icon (click)="deleteMovie()">delete_forever</mat-icon>
+        <mat-icon (click)="openEditMovieDialog()">edit</mat-icon>
         <app-next-back-button routerLink="1">Obsada
         </app-next-back-button>
       </div>

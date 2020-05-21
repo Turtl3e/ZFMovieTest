@@ -7,14 +7,24 @@ import { MovieComponent } from './components/movie/movie.component';
 import { SharedModule } from '../shared/shared.module';
 import { MovieActorsComponent } from './components/movie-actors/movie-actors.component';
 import { PhotoOverlayComponent } from './components/photo-overlay/photo-overlay.component';
+import { MovieDialogFormComponent } from './dialogs/movie-dialog-form/movie-dialog-form.component';
 
 
 @NgModule({
-  declarations: [MoviesComponent, MovieComponent, MovieActorsComponent, PhotoOverlayComponent],
-  imports: [
-    CommonModule,
-    MoviesRoutingModule,
-    SharedModule
-  ]
+  declarations:
+    [
+      MoviesComponent,
+      MovieComponent,
+      MovieActorsComponent,
+      PhotoOverlayComponent,
+      MovieDialogFormComponent
+    ],
+  imports:
+    [
+      CommonModule,
+      MoviesRoutingModule,
+      SharedModule
+    ],
+  entryComponents: [MovieDialogFormComponent]
 })
 export class MoviesModule { }

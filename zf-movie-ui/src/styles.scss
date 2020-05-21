@@ -57,7 +57,7 @@ body {
   width: auto;
   //   overflow: visible;
   /* inherit font & color from ancestor */
-  color: inherit;
+  // color: inherit;
   font: inherit;
 
   /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
@@ -74,4 +74,33 @@ body {
   background-color: $div-content-color;
   box-shadow: 10px -10px 0px -5px $underlay-color;
   cursor: pointer;
+
+  &--cancel,
+  &--save {
+    box-shadow: none;
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+
+  &--cancel {
+    box-shadow: none;
+  }
+
+  &--save {
+    box-shadow: none;
+    background-color: $third-color;
+  }
+}
+
+// Dialog styling
+.myapp-no-padding-dialog .mat-dialog-container {
+  // background-color: red;
+  width: auto;
+  height: auto;
+  min-height: 400px;
+  box-shadow: 16px 16px 0px 0px $underlay-color;
+  border-radius: 0;
+  background-color: rgb(235, 233, 233);
+  border-top-left-radius: 5px;
+  font-size: .8rem;
 }
