@@ -9,7 +9,10 @@
   overflow: hidden;
 
   & img {
+    // width: 100%;
     width: 100%;
+    max-width: 200px;
+    height: auto;
     // height: 50%;
     opacity: .9;
     // height: 100%;

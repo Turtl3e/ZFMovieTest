@@ -33,11 +33,20 @@ public class MovieService {
         return movieRepository.save(movieToCreate);
     }
 
+    @Transactional
     public Movie updateMovie(long movieToUpdateId,Movie updatedMovie) {
         Movie movieToUpdate=getMovie(movieToUpdateId);
         movieToUpdate.updateMovie(updatedMovie);
-        return movieRepository.save(movieToUpdate);//should be save
+        //FIXME: save Could be removed when @Trainsactional?
+        return movieRepository.save(movieToUpdate);
+//        return movieToUpdate;
     }
+
+//    Could be
+//    public Movie updateMovie(Movie updatedMovie) {
+//       Movie movieToUpdate= movieRepository.findById(updatedMovie.getPieceId()).orElseThrow();
+//        return movieRepository.save(updatedMovie);//should be save
+//    }
 
     public void deleteMovie(long movieToDeleteId) {
         Movie movieToDelete=getMovie(movieToDeleteId);

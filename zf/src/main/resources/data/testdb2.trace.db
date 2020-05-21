@@ -104,3 +104,15 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1165)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 29 more
+2020-05-21 13:36:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "STRINGDECODE('Daniel Jacob Radcliffe urodzi\u0142 si\u0119 23 lipca 1989 roku w Fulham jako dziecko Alana Radcliffe''a i Marci G... (469)"; SQL statement:
+insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-05-21 13:36:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "STRINGDECODE('Daniel Jacob Radcliffe urodzi\u0142 si\u0119 23 lipca 1989 roku w Fulham jako dziecko Alana Radcliffe''a i Marci G... (286)"; SQL statement:
+insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-05-21 13:37:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Daniel Jacob Radcliffe urodzil sie 23 lipca 1989 roku w Fulham jako dziecko Alana Radcliffe''a i Marci Gresham. Jako mlody chlo... (285)"; SQL statement:
+insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-05-21 22:59:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Rupert ma brata Jamesa i trzy siostry - Georgine, Samanthe i Charlotte, jest z nich najstarszy. Jego ojciec Nigel jest sprzedaw... (269)"; SQL statement:
+insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]

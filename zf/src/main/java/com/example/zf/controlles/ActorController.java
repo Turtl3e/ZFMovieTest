@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,7 +19,14 @@ public class ActorController {
 
     private final ActorService actorService;
     @GetMapping("")
-    public List<Actor> getActors() {
+    public List<Actor> getActors(@RequestParam(value = "firstName")Optional<String> firstName, @RequestParam(value = "secondName")Optional<String> secondName) {
+        if(firstName.isPresent()&&secondName.isPresent()){
+            return actorService.getActorsWithParams(firstName.get(),secondName.get());
+        }else if(firstName.isPresent()){
+            return actorService.getActorsWithParams(firstName.get(),firstName.get());
+        }else if(secondName.isPresent()){
+            return actorService.getActorsWithParams(secondName.get(),secondName.get());
+        }
         return actorService.getActors();
     }
 
