@@ -1,8 +1,4 @@
-<div class="poster-container">
-  <div class="poster">
-    <img src="{{movie.posterUrl}}" alt="">
-  </div>
-</div>
+<app-movie-poster [posterUrl]="movie.posterUrl"></app-movie-poster>
 <div class="info-container">
   <div class="info">
     <div class="info-content">
@@ -12,7 +8,7 @@
       <app-squared-paragraph><b>Director:</b> {{movie.director}}</app-squared-paragraph>
       <app-squared-paragraph><b>Genre:</b> {{movie.genre}}</app-squared-paragraph>
       <app-squared-paragraph><b>Production country:</b> {{movie.countryOfProduction}}</app-squared-paragraph>
-      <app-squared-paragraph><b>Premiere:</b> {{movie.releaseDate|date:'mediumDate'}}</app-squared-paragraph>
+      <app-squared-paragraph><b>Premiere:</b> {{movie.releaseDate| date:'mediumDate'}}</app-squared-paragraph>
       <div class="action-container">
         <mat-icon *ngIf="!isDetailsComponent" (click)="deleteMovie()">delete_forever</mat-icon>
         <mat-icon (click)="openEditMovieDialog()">edit</mat-icon>

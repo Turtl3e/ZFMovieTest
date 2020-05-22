@@ -1,10 +1,7 @@
 <div class="actor">
   <img src="{{actor.posterUrl}}" alt="" srcset="">
-  <span class="actor-bio">
-    <p>{{actor.firstName}} {{actor.secondName}}</p>
-    <mat-icon (click)="removeActorFromMovie()">delete_forever</mat-icon>
-  </span>
+  <p class="actor-overlay" [routerLink]="['/actors',actor.actorId]">Show actor</p>
 </div>
-<!-- <div class="delete-container">
-  <mat-icon>delete</mat-icon>
-</div> -->
+<p class="actor-bio">{{actor.firstName}} {{actor.secondName}}</p>
+<mat-icon (click)="removeActorFromMovie()">delete_forever</mat-icon>
+<!-- </div> -->

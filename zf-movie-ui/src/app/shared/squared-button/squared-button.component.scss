@@ -34,6 +34,17 @@
       background-color: $underlay-color;
     }
   }
+
+  &.orange-blue-light {
+
+    &>.front-square {
+      background-color: $third-color;
+    }
+
+    .back-square {
+      background-color: $second-color;
+    }
+  }
 }
 
 // :host.action-button:hover>.front-square {

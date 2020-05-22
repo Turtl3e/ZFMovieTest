@@ -1,9 +1,13 @@
 <form class="example-form" #createMovieForm="ngForm">
 
   <mat-form-field class="example-full-width">
-    <mat-label>Title</mat-label>
-    <input class="form-control" matInput placeholder="Ex. Harry Potter" name="title" required
-      [(ngModel)]="actor.firstName">
+    <mat-label>First Name</mat-label>
+    <input class="form-control" matInput placeholder="Emma" name="firstName" required [(ngModel)]="actor.firstName">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Second Name</mat-label>
+    <input matInput placeholder="Watson" name="secondName" required [(ngModel)]="actor.secondName">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -18,24 +22,16 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <mat-label>Director</mat-label>
-    <input matInput placeholder="John Smith" name="director" required [(ngModel)]="actor">
+    <mat-label>Birthplace</mat-label>
+    <input matInput placeholder="Czestochowa" name="placeOfBirth" required [(ngModel)]="actor.placeOfBirth">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <mat-label>Genre</mat-label>
-    <input matInput placeholder="Familijny / Fantasy / Przygodowy" name="genre" required [(ngModel)]="actor">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Production country</mat-label>
-    <input matInput placeholder="Poland" name="countryOfProduction" required [(ngModel)]="actor">
-  </mat-form-field>
 
   <mat-form-field class="example-full-width" color="accent">
-    <mat-label>Release date</mat-label>
-    <input matInput [matDatepicker]="picker2" required name="releaseDate" [(ngModel)]="actor">
+    <mat-label>Born date</mat-label>
+    <input matInput [matDatepicker]="picker2" required name="born" [(ngModel)]="actor.born">
     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
     <mat-datepicker #picker2 color="primary"></mat-datepicker>
   </mat-form-field>
 </form>
+<button type="submit" class="main-button main-button--save" [disabled]="createMovieForm.invalid">Create</button>

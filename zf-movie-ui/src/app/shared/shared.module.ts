@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { ActorFormComponent } from './actor-form/actor-form.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MoviePosterComponent } from './movie-poster/movie-poster.component';
 
 @NgModule({
   declarations:
@@ -18,7 +19,8 @@ import { MatTabsModule } from '@angular/material/tabs';
       SquaredButtonComponent,
       SquaredParagraphComponent,
       NextBackButtonComponent,
-      ActorFormComponent
+      ActorFormComponent,
+      MoviePosterComponent
     ],
   imports:
     [
@@ -43,7 +45,8 @@ import { MatTabsModule } from '@angular/material/tabs';
       MatDatepickerModule,
       FormsModule,
       ActorFormComponent,
-      MatTabsModule
+      MatTabsModule,
+      MoviePosterComponent
     ]
 })
 export class SharedModule { }

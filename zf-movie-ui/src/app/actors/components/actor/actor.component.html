@@ -1,0 +1,41 @@
+<div class="grid-container" [ngClass]='{"detail":!isDetailsComponent}'
+  [routerLink]="!isDetailsComponent ? [actor.actorId] : []">
+  <div class="header">
+    <p class="header-title">{{actor.firstName}} {{actor.secondName}}</p>
+  </div>
+  <div class="content">
+    <p class="content-description">{{actor.description}}</p>
+    <div>
+      <app-squared-paragraph squaredButtonClassName="orange-blue-light">
+        <p class="content-description content-description-squared">
+          <b>Birthplace:</b> {{actor.placeOfBirth}}
+        </p>
+      </app-squared-paragraph>
+      <app-squared-paragraph squaredButtonClassName="orange-blue-light">
+        <p class="content-description content-description-squared">
+          <b>Birthdate:</b> {{actor.born| date:'mediumDate'}}
+        </p>
+      </app-squared-paragraph>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="filmography">
+      <app-next-back-button *ngIf="!isDetailsComponent">
+        <p class="content-description content-description-squared">Filmography</p>
+      </app-next-back-button>
+
+      <app-next-back-button routerLink="/actors" arrowDirection="left" *ngIf="isDetailsComponent">
+        <p class="content-description content-description-squared">Back</p>
+      </app-next-back-button>
+    </div>
+    <div class="actions-action edit">
+      <mat-icon>edit</mat-icon>
+    </div>
+    <div class="actions-action delete">
+      <mat-icon>delete_forever</mat-icon>
+    </div>
+  </div>
+  <div class="photo-container">
+    <img src="{{actor.posterUrl}}" alt="" srcset="">
+  </div>
+</div>

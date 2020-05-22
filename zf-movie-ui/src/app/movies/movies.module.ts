@@ -13,6 +13,7 @@ import { SearchActorsComponent } from './actors/search-actors/search-actors.comp
 import { InlineActorComponent } from './actors/inline-actor/inline-actor.component';
 
 
+
 @NgModule({
   declarations:
     [
@@ -23,7 +24,7 @@ import { InlineActorComponent } from './actors/inline-actor/inline-actor.compone
       MovieDialogFormComponent,
       AddActorToMovieDialogComponent,
       SearchActorsComponent,
-      InlineActorComponent
+      InlineActorComponent,
     ],
   imports:
     [

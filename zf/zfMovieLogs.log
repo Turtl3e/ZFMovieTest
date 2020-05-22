@@ -1171,3 +1171,32 @@ javax.persistence.NonUniqueResultException: query did not return a unique result
 2020-05-22 15:32:13.653  INFO 13948 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-05-22 15:32:13.666  INFO 13948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-05-22 15:32:13.767  INFO 13948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 100 ms
+2020-05-22 15:38:05.960  INFO 18132 --- [main] com.example.zf.ZfmovieApplication        : Starting ZfmovieApplication on LAPTOP-PKU80AHV with PID 18132 (D:\repository\ZFMovieTest\zf\target\classes started by matkl in D:\repository\ZFMovieTest\zf)
+2020-05-22 15:38:05.961  INFO 18132 --- [main] com.example.zf.ZfmovieApplication        : No active profile set, falling back to default profiles: default
+2020-05-22 15:38:06.606  INFO 18132 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-05-22 15:38:06.647  INFO 18132 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35ms. Found 2 JPA repository interfaces.
+2020-05-22 15:38:07.071  INFO 18132 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-05-22 15:38:07.077  INFO 18132 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-22 15:38:07.077  INFO 18132 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-05-22 15:38:07.166  INFO 18132 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-22 15:38:07.166  INFO 18132 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1179 ms
+2020-05-22 15:38:07.204  INFO 18132 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-22 15:38:07.290  INFO 18132 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-22 15:38:07.294  INFO 18132 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./src/main/resources/data/testdb2'
+2020-05-22 15:38:07.413  INFO 18132 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-22 15:38:07.447  INFO 18132 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-22 15:38:07.488  INFO 18132 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-05-22 15:38:07.587  INFO 18132 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-22 15:38:07.673  INFO 18132 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-05-22 15:38:08.105  INFO 18132 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-22 15:38:08.110  INFO 18132 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-22 15:38:08.785  WARN 18132 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-22 15:38:10.042  INFO 18132 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-05-22 15:38:10.043  INFO 18132 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-05-22 15:38:10.117  INFO 18132 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-05-22 15:38:10.125  INFO 18132 --- [main] com.example.zf.ZfmovieApplication        : Started ZfmovieApplication in 4.391 seconds (JVM running for 5.076)
+2020-05-22 15:38:16.292  INFO 18132 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-22 15:38:16.292  INFO 18132 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-22 15:38:16.303  INFO 18132 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-05-22 16:17:15.621  INFO 18132 --- [http-nio-8080-exec-7] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 571 ms
+2020-05-22 18:04:54.103  WARN 18132 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56m46s326ms43µs).

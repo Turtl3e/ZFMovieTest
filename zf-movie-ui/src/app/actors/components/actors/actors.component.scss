@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  //   padding: 5rem;
+  padding-top: 5rem;
+  //   background-color: rosybrown;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  //   align-items: stretch;
+  flex-wrap: wrap;
+  height: 100%;
+  //   align-content: stretch;
+}
+
+app-squared-button {
+  position: fixed;
+  left: 5%;
+  top: 50%;
+}

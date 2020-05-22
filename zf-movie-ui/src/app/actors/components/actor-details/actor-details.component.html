@@ -1,0 +1,8 @@
+<app-actor [actor]="actor"></app-actor>
+<div class="filmography">
+  <p class="filmography-heading">Filmography</p>
+  <div class="filmography-container">
+    <app-movie-poster *ngFor="let movie of actor.movies" [posterUrl]="movie.posterUrl"
+      [routerLink]="['/movies',movie.pieceId]"></app-movie-poster>
+  </div>
+</div>

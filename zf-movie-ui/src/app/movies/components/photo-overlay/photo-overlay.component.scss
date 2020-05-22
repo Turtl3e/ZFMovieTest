@@ -1,19 +1,23 @@
 @import './../../../../utils/utils.scss';
 
 :host {
-  position: relative;
+  // position: relative;
+  // display: block;
   transition: all ease-in-out .2s;
+  margin: 1rem 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .actor {
-  width: 170px;
-  height: 14rem;
-  margin-right: .5rem;
-  margin-left: .5rem;
+  width: 130px;
+  height: 140px;
   background-color: black;
   position: relative;
   overflow: hidden;
-  // border-radius: 2px 2px 7px 7px;
+  border-radius: 50%;
 
   &>img {
     width: 100%;
@@ -23,66 +27,48 @@
   }
 
   &-bio {
+    text-align: center;
+    line-height: 2.5rem;
+    display: block;
+    color: $underlay-color;
+    font-size: .9rem;
+    letter-spacing: 2px;
+    min-width: 144px;
+  }
+
+  &-overlay {
+    background-color: $underlay-color;
     position: absolute;
     width: 100%;
-    height: 3rem;
-    background-color: $underlay-color;
-    bottom: 0;
+    height: 100%;
+    top: 0;
     left: 0;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #EDDADA;
+    text-align: center;
     font-size: .8rem;
-    letter-spacing: 2px;
-    box-shadow: 0px -4px 20px -4px rgba(0, 0, 0, 0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #EDDADA;
+    cursor: pointer;
+    transform: translateY(100%);
+    transition: all ease-in-out .4s;
   }
-}
 
-:host:hover>.delete-container {
-  opacity: 1;
+  &:hover>&-overlay {
+    transform: translateY(60%);
+    // background-color: salmon;
+  }
 }
 
 mat-icon {
   font-size: 22px;
   height: 22px;
   width: 22px;
-  line-height: 1rem;
-  color: #EDDADA;
-  opacity: .6;
-  transition: all ease-in-out .3s;
-  cursor: pointer;
+  line-height: 22px;
+  // color: #E0DBDB;
+  opacity: .8;
+  transition: all ease-in-out .2s;
 
   &:hover {
     transform: scale(1.1);
+    opacity: 0.95;
+    cursor: pointer;
   }
 }
-
-// .delete-container {
-//   transition: all ease-in-out .6s;
-//   position: absolute;
-//   right: -.4rem;
-//   top: -.9rem;
-//   width: 1.9rem;
-//   height: 1.9rem;
-//   background-color: $underlay-color;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border-radius: 50%;
-
-//   opacity: 0;
-
-//   & mat-icon {
-//     font-size: 20px;
-//     height: 20px;
-//     width: 20px;
-//     line-height: 20px;
-//     color: #E0DBDB;
-//     opacity: .8;
-//   }
-// }

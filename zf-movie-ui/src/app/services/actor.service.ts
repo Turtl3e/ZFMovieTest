@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Actor, ActorResponse } from '../models/actor';
+import { Actor, ActorResponse, ActorRequest } from '../models/actor';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,30 @@ export class ActorService {
   ACTORS_URL: string = "http://127.0.0.1:8080/actors"
 
   constructor(private http: HttpClient) { }
+
+
+  getActors(): Observable<Actor[]> {
+    return this.http.get<ActorResponse[]>(this.ACTORS_URL).pipe(
+      map((actorsData) => actorsData.map(actor => new Actor(actor)))
+    )
+  }
+
+  getActor(actorId: number): Actor | Observable<Actor> | Promise<Actor> {
+    return this.http.get<ActorResponse>(`${this.ACTORS_URL}/${actorId}`).pipe(
+      map(actor => new Actor(actor)),
+      catchError(e => of(null))
+    )
+  }
+
+  deleteActor(actorToDeleteId: number): Observable<any> {
+    return this.http.delete<any>(`${this.ACTORS_URL}/${actorToDeleteId}`);
+  }
+
+  createActor(actor: ActorRequest): Observable<Actor> {
+    return this.http.post<ActorResponse>(this.ACTORS_URL, actor).pipe(
+      map(createdActor => new Actor(createdActor))
+    )
+  }
 
   searchActors(term: string): Observable<Actor[]> {
     if (!term.trim()) {
