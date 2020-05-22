@@ -20,10 +20,7 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies(): void {
-    this.movieService.getMovies().subscribe((movies: Movie[]) => {
-      this.movies = movies;
-      console.log(this.movies);
-    });
+    this.movieService.getMovies().subscribe((movies: Movie[]) => this.movies = movies);
   }
 
   onMovieDelete(movieToDeleteId: number): void {

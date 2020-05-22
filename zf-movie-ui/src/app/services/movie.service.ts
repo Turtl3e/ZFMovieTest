@@ -9,7 +9,6 @@ import { Actor, ActorRequest, ActorResponse } from '../models/actor';
   providedIn: 'root'
 })
 export class MovieService {
-
   MOVIE_PATH: string = "http://127.0.0.1:8080/movies"
   constructor(private http: HttpClient) { }
 
@@ -33,21 +32,25 @@ export class MovieService {
     return this.http.delete<any>(`${this.MOVIE_PATH}/${movieToDeleteId}`);
   }
 
-  createMovie(movie: MovieRequest) {
+  createMovie(movie: MovieRequest): Observable<Movie> {
     return this.http.post<MovieResponse>(this.MOVIE_PATH, movie).pipe(
       map(createdMovie => new Movie(createdMovie))
     )
   }
 
-  updateMovie(oldMovieId: number, newMovie: MovieRequest) {
+  updateMovie(oldMovieId: number, newMovie: MovieRequest): Observable<Movie> {
     return this.http.put<MovieResponse>(`${this.MOVIE_PATH}/${oldMovieId}`, newMovie).pipe(
       map(createdMovie => new Movie(createdMovie))
     )
   }
 
-  addActorToMovie(movieId: number, actor: ActorRequest) {
+  addActorToMovie(movieId: number, actor: ActorRequest): Observable<Actor> {
     return this.http.post(`${this.MOVIE_PATH}/${movieId}/actors`, actor).pipe(
       map((addedActor: ActorResponse) => new Actor(addedActor))
     )
+  }
+
+  deleteActorFromMovie(movieId: number, actorId: number): Observable<any> {
+    return this.http.delete(`${this.MOVIE_PATH}/${movieId}/actors/${actorId}`)
   }
 }

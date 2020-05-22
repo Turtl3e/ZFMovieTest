@@ -7,6 +7,7 @@ import { Actor } from 'src/app/models/actor';
 import { SharedService } from 'src/app/services/shared.service';
 import { Subject } from 'rxjs';
 import { MovieService } from 'src/app/services/movie.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-actors',
@@ -26,8 +27,7 @@ export class MovieActorsComponent implements OnInit, OnDestroy {
 
   private setSubscribtions() {
     this.activatedRoute.data.subscribe(data => { this.movie = data.movie; })
-    this.sharedService.actorAdded.subscribe((actor: Actor) => this.onActorAdd(actor))
-
+    this.sharedService.actorAdded.pipe(takeUntil(this.componentDestroyed)).subscribe((actor: Actor) => this.onActorAdd(actor));
   }
 
   onActorAdd(actor: Actor) {
@@ -46,6 +46,6 @@ export class MovieActorsComponent implements OnInit, OnDestroy {
   }
 
   onActorRemoved(actor: Actor) {
-    this.movie.removeActor(actor);
+    this.movieService.deleteActorFromMovie(this.movie.pieceId, actor.actorId).subscribe(() => this.movie.removeActor(actor));
   }
 }

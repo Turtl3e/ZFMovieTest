@@ -56,11 +56,16 @@ public class MovieService {
 
     @Transactional
     public Actor addActorToMovie(long movieId, Actor actorInputToActor) {
+        System.out.println("XXXXXXXXXX"+movieId);
         Movie movie= getMovie(movieId);
+        System.out.println("XXXXXXXXXX"+movie.getTitle());
         Actor actorToAdd= actorRepository.findByFirstNameAndSecondName(actorInputToActor.getFirstName(),actorInputToActor.getSecondName())
-                .orElseGet(()-> actorRepository.save(actorInputToActor));
+                .orElseGet(()-> {
+                    System.out.println("TWORZE NOWY");
+                    return actorRepository.save(actorInputToActor);
+                });
         movie.getActors().add(actorToAdd);
-        movieRepository.save(movie);
+//        movieRepository.save(movie);
         return actorToAdd;
     }
 
