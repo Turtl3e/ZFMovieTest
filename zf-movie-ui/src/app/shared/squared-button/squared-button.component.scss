@@ -11,8 +11,28 @@
       cursor: pointer;
       transform: scale(1.02);
     }
+  }
 
+  &.icon-x24 {
 
+    mat-icon {
+      font-size: 32px;
+      height: 32px;
+      width: 32px;
+      line-height: 32px;
+      color: rgba(255, 255, 255, 0.54);
+    }
+  }
+
+  &.black-blue {
+
+    &>.front-square {
+      background-color: $first-color;
+    }
+
+    .back-square {
+      background-color: $underlay-color;
+    }
   }
 }
 
@@ -30,8 +50,10 @@
   position: absolute;
   top: -4px;
   right: -4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 mat-icon {
   font-size: 48px;

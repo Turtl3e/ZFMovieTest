@@ -116,3 +116,6 @@ insert into actor (born, description, first_name, place_of_birth, poster_url, se
 2020-05-21 22:59:44 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Rupert ma brata Jamesa i trzy siostry - Georgine, Samanthe i Charlotte, jest z nich najstarszy. Jego ojciec Nigel jest sprzedaw... (269)"; SQL statement:
 insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-05-22 05:15:10 jdbc[33]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Jamie Foxx to aktor, rezyser, scenarzysta, producent, kompozytor. Po rozwodzie rodzicow, gdy mial zaledwie siedem miesiecy, opi... (259)"; SQL statement:
+insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { Movie, MovieResponse, MovieRequest } from '../models/movie';
 import { map, catchError } from 'rxjs/operators';
+import { Actor, ActorRequest, ActorResponse } from '../models/actor';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,10 @@ export class MovieService {
 
   getMovie(movieId: number): Observable<Movie> {
     return this.http.get<MovieResponse>(`${this.MOVIE_PATH}/${movieId}`).pipe(
-      map(movie => new Movie(movie)),
+      map(movie => {
+        movie.actors = movie.actors.map(actor => new Actor(actor));
+        return new Movie(movie)
+      }),
       catchError(e => of(null))
     )
   }
@@ -41,9 +45,9 @@ export class MovieService {
     )
   }
 
-  // private handleError<T>(operation = 'operation', result?: T) {
-  //   return (error: any): Observable<T> => {
-  //     return of(result as T);
-  //   };
-  // }
+  addActorToMovie(movieId: number, actor: ActorRequest) {
+    return this.http.post(`${this.MOVIE_PATH}/${movieId}/actors`, actor).pipe(
+      map((addedActor: ActorResponse) => new Actor(addedActor))
+    )
+  }
 }

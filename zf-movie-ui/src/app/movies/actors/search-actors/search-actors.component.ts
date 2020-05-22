@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Actor } from 'src/app/models/actor';
 import { ActorService } from 'src/app/services/actor.service';
@@ -11,6 +11,7 @@ import { distinctUntilChanged, debounceTime, switchMap } from 'rxjs/operators';
 })
 export class SearchActorsComponent implements OnInit {
 
+  @Input() selectedMovieActors: Actor[];
   actors$: Observable<Actor[]>;
   private searchTerms = new Subject<string>();
 
@@ -22,6 +23,7 @@ export class SearchActorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.actors$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(500),
@@ -30,6 +32,10 @@ export class SearchActorsComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.actorService.searchActors(term)),
     );
+  }
+
+  doesActorExistInSelectedMovie(foundActor: Actor): boolean {
+    return this.selectedMovieActors.filter(actor => actor.actorId == foundActor.actorId).length > 0
   }
 
 }

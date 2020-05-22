@@ -7,6 +7,7 @@ import com.example.zf.models.Movie;
 import com.example.zf.repositories.ActorRepository;
 import com.example.zf.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.jni.Error;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -53,10 +54,11 @@ public class MovieService {
         movieRepository.delete(movieToDelete);
     }
 
+    @Transactional
     public Actor addActorToMovie(long movieId, Actor actorInputToActor) {
         Movie movie= getMovie(movieId);
-        Actor actorToAdd=actorRepository.findByFirstNameAndSecondName(actorInputToActor.getFirstName(),actorInputToActor.getSecondName()).
-                orElse(actorRepository.save(actorInputToActor));
+        Actor actorToAdd= actorRepository.findByFirstNameAndSecondName(actorInputToActor.getFirstName(),actorInputToActor.getSecondName())
+                .orElseGet(()-> actorRepository.save(actorInputToActor));
         movie.getActors().add(actorToAdd);
         movieRepository.save(movie);
         return actorToAdd;

@@ -2,5 +2,9 @@
   <img src="{{actor.posterUrl}}" alt="" srcset="">
   <span class="actor-bio">
     <p>{{actor.firstName}} {{actor.secondName}}</p>
+    <mat-icon (click)="removeActorFromMovie()">delete_forever</mat-icon>
   </span>
 </div>
+<!-- <div class="delete-container">
+  <mat-icon>delete</mat-icon>
+</div> -->

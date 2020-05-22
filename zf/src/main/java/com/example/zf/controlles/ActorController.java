@@ -18,17 +18,22 @@ import java.util.Optional;
 public class ActorController {
 
     private final ActorService actorService;
-    @GetMapping("")
+
+    @RequestMapping(method =RequestMethod.GET, params = {"firstName","secondName"})
     public List<Actor> getActors(@RequestParam(value = "firstName")Optional<String> firstName, @RequestParam(value = "secondName")Optional<String> secondName) {
-        if(firstName.isPresent()&&secondName.isPresent()){
             return actorService.getActorsWithParams(firstName.get(),secondName.get());
-        }else if(firstName.isPresent()){
-            return actorService.getActorsWithParams(firstName.get(),firstName.get());
-        }else if(secondName.isPresent()){
-            return actorService.getActorsWithParams(secondName.get(),secondName.get());
-        }
+    }
+
+    @RequestMapping(method =RequestMethod.GET, params = "stringParam")
+    public List<Actor> getActors(@RequestParam(value = "stringParam")Optional<String> stringParam) {
+            return actorService.getActorsWithParams(stringParam.get(),stringParam.get());
+    }
+
+    @RequestMapping(method =RequestMethod.GET)
+    public List<Actor> getActors() {
         return actorService.getActors();
     }
+
 
     @PostMapping()
     public Actor createActor(@RequestBody ActorInput actorToCreate){

@@ -1,5 +1,10 @@
-<p>search-actors works!</p>
-<input #searchBox id="search-box" (input)="search(searchBox.value)" />
-<li *ngFor="let actor of actors$ | async">
-  <a>{{actor.firstName}}</a>
-</li>
+<h4>Search actor</h4>
+<mat-form-field class="example-full-width">
+  <mat-label>Ex. Harry Potter</mat-label>
+  <input class="form-control" matInput placeholder="Ex. Harry Potter" #searchBox id="search-box"
+    (input)="search(searchBox.value)">
+</mat-form-field>
+<div class="search-output">
+  <app-inline-actor *ngFor="let actor of actors$ | async" [actor]="actor"
+    [disabled]="doesActorExistInSelectedMovie(actor)"></app-inline-actor>
+</div>

@@ -17,12 +17,18 @@ export class ActorService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<ActorResponse[]>(`${this.ACTORS_URL}/?name=${term}`).pipe(
-      map(actorsData => actorsData.map(actor => new Actor(actor)))
-      // tap(x => x.length ?
-      //   this.log(`found heroes matching "${term}"`) :
-      //   this.log(`no heroes matching "${term}"`)),
-      // catchError(this.handleError<Hero[]>('searchHeroes', []))
-    );
+    let stringParam = term.split(" ");
+    const res = stringParam.reduce((a, b) => (a[b] = '', a), {});
+    return this.http.get<ActorResponse[]>(`${this.ACTORS_URL}`,
+      {
+        params: this.prepareParamsObject(stringParam)
+      }).pipe(map(actorsData => actorsData.map(actor => new Actor(actor))));
+  }
+
+  private prepareParamsObject(words: string[]) {
+    if (words.length == 1) {
+      return { stringParam: words[0] }
+    }
+    return { firstName: words[0], secondName: words[1] }
   }
 }

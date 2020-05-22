@@ -8,9 +8,11 @@
       </div>
       <div class="scroll-container">
         <!--TODO: Add slicker gallery instead of scroll-->
-        <app-photo-overlay *ngFor="let actor of movie.actors" [actor]="actor"></app-photo-overlay>
+        <app-photo-overlay *ngFor="let actor of movie.actors" [actor]="actor" (removed)="onActorRemoved($event)">
+        </app-photo-overlay>
       </div>
     </div>
     <div class="movie-actors-card-underlay"></div>
+
   </div>
 </div>

@@ -10,6 +10,7 @@ import { PhotoOverlayComponent } from './components/photo-overlay/photo-overlay.
 import { MovieDialogFormComponent } from './dialogs/movie-dialog-form/movie-dialog-form.component';
 import { AddActorToMovieDialogComponent } from './dialogs/add-actor-to-movie-dialog/add-actor-to-movie-dialog.component';
 import { SearchActorsComponent } from './actors/search-actors/search-actors.component';
+import { InlineActorComponent } from './actors/inline-actor/inline-actor.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SearchActorsComponent } from './actors/search-actors/search-actors.comp
       PhotoOverlayComponent,
       MovieDialogFormComponent,
       AddActorToMovieDialogComponent,
-      SearchActorsComponent
+      SearchActorsComponent,
+      InlineActorComponent
     ],
   imports:
     [

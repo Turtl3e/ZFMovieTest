@@ -1,8 +1,8 @@
 <h1 mat-dialog-title>Add actor to this movie</h1>
-<div mat-dialog-content>
+<div mat-dialog-content class="mat-dialog-content">
   <mat-tab-group>
     <mat-tab label="Find existing">
-      <app-search-actors></app-search-actors>
+      <app-search-actors [selectedMovieActors]="selectedMovieActors"></app-search-actors>
     </mat-tab>
     <mat-tab label="Add new">
       <app-actor-form></app-actor-form>

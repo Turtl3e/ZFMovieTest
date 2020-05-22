@@ -1,0 +1,11 @@
+<div class="actor-photo">
+  <img src="{{actor.posterUrl}}" alt="" srcset="">
+</div>
+<div class="text-container">
+  <p class="">{{actor.firstName}} {{actor.secondName}}</p>
+</div>
+<app-squared-button [ngClass]="['icon-x24','black-blue']" frontColor="#01295F" backColor="#3B3A38" size="2rem"
+  icon="true" (click)="addActorToMovie()"></app-squared-button>
+<div class="overlay" *ngIf="disabled">
+  <h4>Already exist in this movie</h4>
+</div>

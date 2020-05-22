@@ -9,10 +9,11 @@ export class SquaredButtonComponent implements OnInit {
 
   @Input() size = "1.5rem";
   @Input() icon = false;
+  @Input() frontColor = "#BC5F04"
+  @Input() backColor = "#01295F"
   @ViewChild('front', { static: true }) frontSquare;
   @ViewChild('back', { static: true }) backSquare;
   @HostBinding('class.action-button') get isActionButton() { return this.icon }
-  private actionColor = "#BC5F04"
 
   constructor(private renderer: Renderer2) { }
 
@@ -26,8 +27,8 @@ export class SquaredButtonComponent implements OnInit {
     this.renderer.setStyle(this.backSquare.nativeElement, 'width', this.size);
     this.renderer.setStyle(this.backSquare.nativeElement, 'height', this.size);
     if (this.icon) {
-      this.renderer.setStyle(this.frontSquare.nativeElement, 'backgroundColor', this.actionColor);
+      // this.renderer.setStyle(this.frontSquare.nativeElement, 'backgroundColor', this.frontColor);
+      // this.renderer.setStyle(this.backSquare.nativeElement, 'backgroundColor', this.backColor);
     }
   }
-
 }

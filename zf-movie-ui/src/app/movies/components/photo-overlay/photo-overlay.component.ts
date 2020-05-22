@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Actor } from 'src/app/models/actor';
 
 @Component({
@@ -9,9 +9,16 @@ import { Actor } from 'src/app/models/actor';
 export class PhotoOverlayComponent implements OnInit {
 
   @Input() actor: Actor;
+  @Output() removed = new EventEmitter<Actor>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  removeActorFromMovie() {
+    this.removed.emit(this.actor);
   }
 
 }
