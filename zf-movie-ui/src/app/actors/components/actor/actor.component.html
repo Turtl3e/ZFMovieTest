@@ -1,9 +1,8 @@
-<div class="grid-container" [ngClass]='{"detail":!isDetailsComponent}'
-  [routerLink]="!isDetailsComponent ? [actor.actorId] : []">
-  <div class="header">
+<div class="grid-container" [ngClass]='{"detail":!isDetailsComponent}'>
+  <div class="header" [routerLink]="!isDetailsComponent ? [actor.actorId] : []">
     <p class="header-title">{{actor.firstName}} {{actor.secondName}}</p>
   </div>
-  <div class="content">
+  <div class="content" [routerLink]="!isDetailsComponent ? [actor.actorId] : []">
     <p class="content-description">{{actor.description}}</p>
     <div>
       <app-squared-paragraph squaredButtonClassName="orange-blue-light">
@@ -19,7 +18,7 @@
     </div>
   </div>
   <div class="actions">
-    <div class="filmography">
+    <div class="filmography" [routerLink]="!isDetailsComponent ? [actor.actorId] : []">
       <app-next-back-button *ngIf="!isDetailsComponent">
         <p class="content-description content-description-squared">Filmography</p>
       </app-next-back-button>
@@ -28,10 +27,10 @@
         <p class="content-description content-description-squared">Back</p>
       </app-next-back-button>
     </div>
-    <div class="actions-action edit">
+    <div class="actions-action edit" (click)="openEditActorDialog()">
       <mat-icon>edit</mat-icon>
     </div>
-    <div class="actions-action delete">
+    <div class="actions-action delete" (click)="deleteActor($event)">
       <mat-icon>delete_forever</mat-icon>
     </div>
   </div>

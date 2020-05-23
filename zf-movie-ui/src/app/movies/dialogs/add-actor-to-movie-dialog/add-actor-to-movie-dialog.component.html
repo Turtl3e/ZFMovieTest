@@ -1,15 +1,18 @@
 <h1 mat-dialog-title>Add actor to this movie</h1>
 <div mat-dialog-content class="mat-dialog-content">
-  <mat-tab-group>
+  <mat-tab-group (selectedIndexChange)="setSelectedTabIndex($event)">
     <mat-tab label="Find existing">
       <app-search-actors [selectedMovieActors]="selectedMovieActors"></app-search-actors>
+      <!-- <app-search-actors></app-search-actors> -->
     </mat-tab>
     <mat-tab label="Add new">
-      <app-actor-form></app-actor-form>
+      <app-actor-form #actorForm></app-actor-form>
     </mat-tab>
   </mat-tab-group>
 </div>
 
 <div mat-dialog-actions>
   <button class="main-button main-button--cancel" mat-dialog-close>Close</button>
+  <button *ngIf="selectedTabIndex>0" type="submit" class="main-button main-button--save"
+    [disabled]="actorForm.actorForm.invalid" (click)="addActorToMovie()">Create and add</button>
 </div>

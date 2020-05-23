@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Actor } from 'src/app/models/actor';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-actor-form',
@@ -8,7 +9,10 @@ import { Actor } from 'src/app/models/actor';
 })
 export class ActorFormComponent implements OnInit {
 
-  actor: Actor = new Actor({});
+  @ViewChild('createActorForm', { static: true }) actorForm: NgForm;
+  @Input() actor = new Actor({});
+
+  // actor: Actor = new Actor({});
   constructor() { }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 <!-- <p class="heading">Actors</p> -->
 <div class="container">
-  <app-actor class="xd" *ngFor="let actor of actors" [actor]="actor"></app-actor>
+  <app-actor class="xd" *ngFor="let actor of actors" [actor]="actor" (actorDeleted)="onActorDelete($event)"></app-actor>
 </div>
-<app-squared-button size="3rem" icon="true" [ngClass]="['orange-blue-light']"></app-squared-button>
+<app-squared-button size="3rem" icon="true" [ngClass]="['orange-blue-light']" (click)="openCreateActorDialog()">
+</app-squared-button>

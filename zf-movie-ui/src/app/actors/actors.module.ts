@@ -5,11 +5,12 @@ import { ActorsRoutingModule } from './actors-routing.module';
 import { ActorComponent } from './components/actor/actor.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
+import { ActorDialogComponent } from './dialogs/actor-dialog/actor-dialog.component';
 
 
 
 @NgModule({
-  declarations: [ActorsComponent, ActorComponent, ActorDetailsComponent],
+  declarations: [ActorsComponent, ActorComponent, ActorDetailsComponent, ActorDialogComponent],
   imports: [
     CommonModule,
     ActorsRoutingModule,

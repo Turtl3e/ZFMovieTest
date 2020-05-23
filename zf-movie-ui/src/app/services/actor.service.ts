@@ -37,6 +37,12 @@ export class ActorService {
     )
   }
 
+  updateActor(oldActorId: number, newActor: ActorRequest): Observable<Actor> {
+    return this.http.put<ActorResponse>(`${this.ACTORS_URL}/${oldActorId}`, newActor).pipe(
+      map(createdActor => new Actor(createdActor))
+    )
+  }
+
   searchActors(term: string): Observable<Actor[]> {
     if (!term.trim()) {
       return of([]);
