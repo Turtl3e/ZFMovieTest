@@ -1,7 +1,9 @@
 package com.example.zf.services;
 
+import com.example.zf.exceptions.ActorAlreadyExistException;
 import com.example.zf.exceptions.MovieNotFoundException;
 import com.example.zf.models.Actor;
+import com.example.zf.models.Movie;
 import com.example.zf.repositories.ActorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,8 +28,9 @@ public class ActorService {
     }
 
     public Actor createActor(Actor actorToCreate){
-        //TODO: Should check if exist
-        return actorRepository.save(actorToCreate);
+        if(actorRepository.existsByFirstNameIgnoreCaseAndSecondNameIgnoreCase(actorToCreate.getFirstName(),actorToCreate.getSecondName()))
+            throw new ActorAlreadyExistException(actorToCreate.getFirstName(),actorToCreate.getSecondName());
+       return actorRepository.save(actorToCreate);
     }
 
     @Transactional
@@ -36,12 +39,18 @@ public class ActorService {
         actorToUpdate.update(actorInputToActor);
         //FIXME: save Could be removed when @Trainsactional?
         return actorRepository.save(actorToUpdate);
-//        return actorToUpdate;
     }
 
     public void deleteActor(long actorToDeleteId) {
         Actor actorToDelete=getActor(actorToDeleteId);
+        removeActorFromAllMovies(actorToDelete);
         actorRepository.delete(actorToDelete);
+    }
+
+    private void removeActorFromAllMovies(Actor actor){
+        for (Movie movie:actor.getMovies()) {
+            movie.removeActor(actor);
+        }
     }
 
     public List<Actor> getActorsWithParams(String firstName, String secondName) {

@@ -10,6 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ActorRepository extends JpaRepository<Actor,Long> {
 
-    Optional<Actor> findByFirstNameAndSecondName(String firstName, String secondName);
+    boolean existsByFirstNameIgnoreCaseAndSecondNameIgnoreCase(String firstName, String secondName);
+    Optional<Actor> findByFirstNameIgnoreCaseAndSecondNameIgnoreCase(String firstName, String secondName);
     Optional<List<Actor>> findAllByFirstNameContainingIgnoreCaseOrSecondNameContainingIgnoreCase(String firstName,String secondName);
 }

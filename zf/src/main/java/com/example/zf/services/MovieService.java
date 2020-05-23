@@ -1,5 +1,7 @@
 package com.example.zf.services;
 
+import com.example.zf.exceptions.ActorAlreadyExistException;
+import com.example.zf.exceptions.MovieAlreadyExistException;
 import com.example.zf.exceptions.MovieNotFoundException;
 import com.example.zf.models.Actor;
 import com.example.zf.models.Movie;
@@ -7,12 +9,10 @@ import com.example.zf.models.Movie;
 import com.example.zf.repositories.ActorRepository;
 import com.example.zf.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.jni.Error;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +30,8 @@ public class MovieService {
     }
 
     public Movie createMovie(Movie movieToCreate){
-        //TODO: Should check if exist
+        if(movieRepository.existsByTitleIgnoreCase(movieToCreate.getTitle()))
+            throw new MovieAlreadyExistException(movieToCreate.getTitle());
         return movieRepository.save(movieToCreate);
     }
 
@@ -43,12 +44,6 @@ public class MovieService {
 //        return movieToUpdate;
     }
 
-//    Could be
-//    public Movie updateMovie(Movie updatedMovie) {
-//       Movie movieToUpdate= movieRepository.findById(updatedMovie.getPieceId()).orElseThrow();
-//        return movieRepository.save(updatedMovie);//should be save
-//    }
-
     public void deleteMovie(long movieToDeleteId) {
         Movie movieToDelete=getMovie(movieToDeleteId);
         movieRepository.delete(movieToDelete);
@@ -56,16 +51,15 @@ public class MovieService {
 
     @Transactional
     public Actor addActorToMovie(long movieId, Actor actorInputToActor) {
-        System.out.println("XXXXXXXXXX"+movieId);
         Movie movie= getMovie(movieId);
-        System.out.println("XXXXXXXXXX"+movie.getTitle());
-        Actor actorToAdd= actorRepository.findByFirstNameAndSecondName(actorInputToActor.getFirstName(),actorInputToActor.getSecondName())
-                .orElseGet(()-> {
-                    System.out.println("TWORZE NOWY");
-                    return actorRepository.save(actorInputToActor);
-                });
+        Actor actorToAdd= actorRepository.findByFirstNameIgnoreCaseAndSecondNameIgnoreCase(actorInputToActor.getFirstName(),actorInputToActor.getSecondName())
+                .orElseGet(()-> actorRepository.save(actorInputToActor));
+
+        //Exception handle
+        if(movie.hasActor(actorToAdd))
+            throw new ActorAlreadyExistException(actorToAdd.getFirstName(),actorToAdd.getSecondName(),movie.getTitle());
+
         movie.getActors().add(actorToAdd);
-//        movieRepository.save(movie);
         return actorToAdd;
     }
 

@@ -53,8 +53,11 @@ public class Movie extends Piece {
     public void removeActor(Actor actorToRemove){
         actors.remove(actorToRemove);
     }
+    public boolean hasActor(Actor actor){
+        return actors.contains(actor);
+    }
 
-    @ManyToMany //cascade = {CascadeType.PERSIST,CascadeType.MERGE}
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JsonManagedReference
     public List<Actor> actors;
 
