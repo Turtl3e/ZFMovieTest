@@ -56,8 +56,4 @@ public class ActorService {
     public List<Actor> getActorsWithParams(String firstName, String secondName) {
         return actorRepository.findAllByFirstNameContainingIgnoreCaseOrSecondNameContainingIgnoreCase(firstName,secondName).orElse(Collections.emptyList());
     }
-
-//    public List<Actor> getActorsWithParams(String firstOrSecondName) {
-//        return actorRepository.findAllByFirstNameContainingIgnoreCaseOrSecondNameContainingIgnoreCase(firstOrSecondName).orElse(Collections.emptyList());
-//    }
 }

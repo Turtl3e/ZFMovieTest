@@ -4,7 +4,6 @@ import com.example.zf.controlles.ActorController;
 import com.example.zf.exceptions.ActorNotFoundException;
 import com.example.zf.models.Actor;
 import com.example.zf.models.Movie;
-import com.example.zf.models.dto.ActorInput;
 import com.example.zf.services.ActorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,22 +33,10 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//https://www.baeldung.com/spring-boot-testing
-//https://howtodoinjava.com/spring-boot2/testing/spring-boot-mockmvc-example/
-//https://www.tutorialspoint.com/spring_boot/spring_boot_rest_controller_unit_test.htm
-//https://www.springboottutorial.com/unit-testing-for-spring-boot-rest-services
-//https://www.blazemeter.com/blog/spring-boot-rest-api-unit-testing-with-junit
-//https://medium.com/backend-habit/integrate-junit-and-mockito-unit-testing-for-controller-layer-91bb4099c2a5
-
-//https://blog.codeleak.pl/2019/09/spring-boot-testing-with-junit-5.html
-//https://dimitr.im/testing-your-rest-controllers-and-clients-with-spring
-
-
 @DisplayName("Actor controller test")
-@RunWith(SpringRunner.class) //MockitoJUnitRunner.class
+@RunWith(SpringRunner.class)
 @WebMvcTest(ActorController.class)
 @AutoConfigureMockMvc
-//@SpringBootTest
 class ActorControllerTest {
 
     @Autowired
