@@ -4,11 +4,12 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
 public class MovieInput  {
-    private Date releaseDate;
+    private LocalDate releaseDate;
     @NotNull
     private String title;
     private String description;

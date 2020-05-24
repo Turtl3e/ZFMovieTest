@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class Actor {
     private Long actorId;
     private String firstName;
     private String secondName;
-    private Date born;
+    private LocalDate born;
     private String placeOfBirth;
     private String description;
     private String posterUrl;

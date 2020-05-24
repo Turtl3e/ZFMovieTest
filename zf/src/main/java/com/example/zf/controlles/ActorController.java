@@ -7,6 +7,7 @@ import com.example.zf.models.dto.ActorInput;
 import com.example.zf.models.dto.ActorWithoutMoviesDto;
 import com.example.zf.services.ActorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class ActorController {
 
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public Actor createActor(@RequestBody ActorInput actorToCreate){
         return actorService.createActor(ActorMapper.actorInputToActor(actorToCreate));
     }
@@ -50,6 +52,7 @@ public class ActorController {
         return ActorMapper.mapToActorWithoutMoviesDto(actorService.updateActor(actorToUpdateId,ActorMapper.actorInputToActor(updatedActor)));
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteActor(@PathVariable(value = "id") long actorToDeleteId){
         actorService.deleteActor(actorToDeleteId);

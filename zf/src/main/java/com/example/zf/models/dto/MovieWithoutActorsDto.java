@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -17,7 +18,7 @@ public class MovieWithoutActorsDto extends Piece {
     private String countryOfProduction;
 
     @Builder
-    public MovieWithoutActorsDto(Long pieceId, Date releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
+    public MovieWithoutActorsDto(Long pieceId, LocalDate releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
         super(pieceId, releaseDate);
         this.title = title;
         this.description = description;

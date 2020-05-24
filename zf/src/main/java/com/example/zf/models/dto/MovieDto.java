@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +16,7 @@ import java.util.Set;
 public class MovieDto {
 
     private Long pieceId;
-    private Date releaseDate;
+    private LocalDate releaseDate;
     private String title;
     private String description;
     private String posterUrl;

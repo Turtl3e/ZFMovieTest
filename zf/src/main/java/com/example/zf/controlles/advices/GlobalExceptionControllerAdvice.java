@@ -1,6 +1,7 @@
 package com.example.zf.controlles.advices;
 
 import com.example.zf.exceptions.ActorAlreadyExistException;
+import com.example.zf.exceptions.ActorNotFoundException;
 import com.example.zf.exceptions.MovieAlreadyExistException;
 import com.example.zf.exceptions.MovieNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class MovieNotFoundAdvice extends ResponseEntityExceptionHandler {
+public class GlobalExceptionControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(MovieNotFoundException.class)
@@ -32,6 +33,13 @@ public class MovieNotFoundAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(MovieAlreadyExistException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     String movieAlreadyExistHandler(MovieAlreadyExistException ex){
+        return ex.getMessage();
+    }
+
+    @ResponseBody
+    @ExceptionHandler(ActorNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String movieAlreadyExistHandler(ActorNotFoundException ex){
         return ex.getMessage();
     }
 }

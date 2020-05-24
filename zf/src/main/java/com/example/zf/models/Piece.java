@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 import java.util.Date;
 
 @MappedSuperclass
@@ -23,5 +24,5 @@ public abstract class Piece {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     private Long pieceId;
-    private Date releaseDate;
+    private LocalDate releaseDate;
 }

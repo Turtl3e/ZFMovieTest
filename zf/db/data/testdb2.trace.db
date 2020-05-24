@@ -154,3 +154,6 @@ alter table movie_actors add constraint FKe4h0sodxy9t27t7b6afhcf8u4 foreign key 
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-05-23 19:34:12 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "STRINGDECODE('Br\u0105zowow\u0142osy i granatowooki, Christopher Robert Evans, bardziej znany jako Chris Evans, urodzi\u0142 si\... (282)"; SQL statement:
+insert into actor (born, description, first_name, place_of_birth, poster_url, second_name, actor_id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]

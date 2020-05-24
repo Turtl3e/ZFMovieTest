@@ -8,6 +8,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Movie extends Piece {
     private String countryOfProduction;
 
     @Builder
-    public Movie(Long pieceId, Date releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
+    public Movie(Long pieceId, LocalDate releaseDate, String title, String description, String posterUrl, String director, String genre, String countryOfProduction) {
         super(pieceId, releaseDate);
         this.title = title;
         this.description = description;
