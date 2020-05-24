@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MovieDialogFormComponent } from '../../dialogs/movie-dialog-form/movie-dialog-form.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie',

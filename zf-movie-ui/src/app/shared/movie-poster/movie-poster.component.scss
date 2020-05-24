@@ -10,6 +10,7 @@
   transform: translate(17px, 17px);
 
   &>img {
-    width: 100%;
+    max-width: 100%;
+    // height: 100%;
   }
 }

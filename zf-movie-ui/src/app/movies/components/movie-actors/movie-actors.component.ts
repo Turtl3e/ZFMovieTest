@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddActorToMovieDialogComponent } from '../../dialogs/add-actor-to-movie-dialog/add-actor-to-movie-dialog.component';
 import { Actor } from 'src/app/models/actor';
@@ -19,7 +19,7 @@ export class MovieActorsComponent implements OnInit, OnDestroy {
   componentDestroyed: Subject<boolean> = new Subject()
   movie: Movie;
 
-  constructor(private activatedRoute: ActivatedRoute, public dialog: MatDialog, private sharedService: SharedService, private movieService: MovieService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public dialog: MatDialog, private sharedService: SharedService, private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.setSubscribtions();
@@ -33,7 +33,7 @@ export class MovieActorsComponent implements OnInit, OnDestroy {
   onActorAdd(actor: Actor) {
     this.movieService.addActorToMovie(this.movie.pieceId, actor).subscribe((addedActor: Actor) => {
       this.movie.actors.push(addedActor);
-    })
+    }, (err) => console.log(err))
   }
 
   openAddActorToMovieDialog() {
@@ -43,6 +43,10 @@ export class MovieActorsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.componentDestroyed.next(true);
     this.componentDestroyed.complete();
+  }
+
+  onMovieDeleted(movieToDeleteId: number): void {
+    this.movieService.deleteMovie(movieToDeleteId).subscribe(() => this.router.navigate(['./..'], { relativeTo: this.activatedRoute }))
   }
 
   onActorRemoved(actor: Actor) {

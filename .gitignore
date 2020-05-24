@@ -29,5 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
-
+./zf/*.gz
 ./zf-movie-ui/node_modules

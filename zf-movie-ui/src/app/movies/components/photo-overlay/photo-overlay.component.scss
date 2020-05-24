@@ -27,13 +27,15 @@
   }
 
   &-bio {
+    margin-top: 1rem;
     text-align: center;
-    line-height: 2.5rem;
+    // line-height: 2.5rem;
     display: block;
     color: $underlay-color;
     font-size: .9rem;
     letter-spacing: 2px;
-    min-width: 144px;
+    // min-width: 144px;
+    min-height: 40px;
   }
 
   &-overlay {

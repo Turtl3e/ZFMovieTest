@@ -1,4 +1,4 @@
-<app-actor [actor]="actor"></app-actor>
+<app-actor [actor]="actor" (actorDeleted)="onActorDelete($event)"></app-actor>
 <div class="filmography">
   <p class="filmography-heading">Filmography</p>
   <div class="filmography-container">

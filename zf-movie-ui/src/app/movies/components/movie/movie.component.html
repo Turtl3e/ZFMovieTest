@@ -10,7 +10,7 @@
       <app-squared-paragraph><b>Production country:</b> {{movie.countryOfProduction}}</app-squared-paragraph>
       <app-squared-paragraph><b>Premiere:</b> {{movie.releaseDate| date:'mediumDate'}}</app-squared-paragraph>
       <div class="action-container">
-        <mat-icon *ngIf="!isDetailsComponent" (click)="deleteMovie()">delete_forever</mat-icon>
+        <mat-icon (click)="deleteMovie()">delete_forever</mat-icon>
         <mat-icon (click)="openEditMovieDialog()">edit</mat-icon>
         <app-next-back-button *ngIf="!isDetailsComponent" routerLink="{{movie.pieceId}}">Obsada</app-next-back-button>
         <app-next-back-button arrowDirection="left" *ngIf="isDetailsComponent" routerLink="./..">Powrót
