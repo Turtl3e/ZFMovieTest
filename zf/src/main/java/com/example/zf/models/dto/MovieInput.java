@@ -1,6 +1,7 @@
 package com.example.zf.models.dto;
 
 import com.sun.istack.NotNull;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
+@Builder
 public class MovieInput  {
     private LocalDate releaseDate;
     @NotNull
