@@ -17,10 +17,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDate;
 
 
-@ActiveProfiles("integration")
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(locations = "classpath:application-test.properties")
+//@ActiveProfiles("integration")
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@TestPropertySource(locations = "classpath:application-test.properties")
 public class MovieControllerIntegrationTests {
 
     @LocalServerPort
@@ -31,7 +31,7 @@ public class MovieControllerIntegrationTests {
 
     HttpHeaders headers = new HttpHeaders();
 
-    @Test
+//    @Test
     public void testGetAllMovies() throws JSONException {
         MovieInput movieInput=MovieInput.builder().countryOfProduction("X").description("X").director("X").genre("X").posterUrl("X")
                 .releaseDate(LocalDate.of(2020,1,1)).title("X").build();
